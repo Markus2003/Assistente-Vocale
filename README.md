@@ -46,10 +46,13 @@ A breve:
 - Miglioramento esperienza mediante CLI
 - Creazione di Comandi Personalizzati
 
-A un po':
+Tra un po':
 - Una incredibile GUI così da evitare la fastidiosa finestra del Terminale...
 - Voice Trigger come per "```Hey Google```"
 - Calendario con Gestione degli Eventi interno
+
+Tra molto tempo:
+- Porting per la lingua Inglese
 
 # BUG
 - Su ```Linux``` il Sintetizzatore Vocale ```emacs``` e ```espeak``` non danno risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
