@@ -43,7 +43,7 @@ dopodichè potrai eseguire dalla cartella dello script:
 
 # Feature in arrivo
 A breve:
-- Miglioramento esperienza mediante CLI
+- Miglioramento Esperienza mediante CLI
 - Creazione di Comandi Personalizzati
 
 Tra un po':
@@ -60,3 +60,9 @@ Se ho tempo e se si può:
 # BUG
 - Su ```Linux``` il Sintetizzatore Vocale ```emacs``` e ```espeak``` non danno risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
+
+# Roadmap
+- Dicembre: Migliorare Esperienza CLI
+- Entro fine 2021 uscire dalla fase ```ALPHA``` ed entrare in fase ```BETA```
+- Gennaio: Creazione dei Comandi Personalizzati
+- Poi si vedrà...
