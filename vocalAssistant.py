@@ -12,7 +12,7 @@ prefix = " "
 assistantName = " "
 assistantPrefix = " "
 userName = "Utente"
-currentVersion = "1.0.5 - ALPHA"
+currentVersion = "0.0.5-ALPHA.2021.11.17"
 
 def checkAndReadData():
     global prefix
