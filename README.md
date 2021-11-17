@@ -54,6 +54,9 @@ Tra un po':
 Tra molto tempo:
 - Porting per la lingua Inglese
 
+Se ho tempo e se si può:
+- Versione per ```Linux ARM``` per ```Chromebook```
+
 # BUG
 - Su ```Linux``` il Sintetizzatore Vocale ```emacs``` e ```espeak``` non danno risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
