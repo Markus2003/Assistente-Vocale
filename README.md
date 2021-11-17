@@ -6,16 +6,24 @@ E non è neanche così terribile...
 
 Comunque conto di portare la personalizzazione a livelli più alti!
 
-## Installazione
+# Sviluppo Attivo
+
+| OS | 64-bit | 32-bit | ARM |
+|----|--------|--------|-----|
+| Windows |  ✓     |  ?     |  ✗     |
+| Linux   |  ✓     |  ?     |  ✗     |
+| macOS   |  ✗     |  ✗     |  ✗     |
+
+# Installazione
 Puoi scaricare direttamente una Release, altrimenti puoi scaricare il Codice Sorgente e compilarlo da te! (W l'Open Source)
 
-# Installazione di una Release
+## Installazione di una Release
 - Scarica l'archivio da Release (Esempio: ```vocalAssistant - <version> - <platform>.rar```)
 - Estrai l'archivio in una cartella a tua scelta
 - Esegui ```vocalAssistant.exe``` per Windows, ```vocalAssistant``` per Linux
 - Fatto!
 
-#  Download Codice Sorgente
+##  Download Codice Sorgente
 - Prima abbiamo detto che ```Assistente Vocale``` è scritto in Python, quindi dovrai scaricare [pip](https://www.python.org/)
 - Questa app contiene librerie esterne che non sono incluse nell'installazione di ```pip```, dovrai quindi scaricarle, per farlo ti basterà aprire una finestra del ```CMD``` per Windows o del ```Terminale``` per Linux e scrivere:
 ```python
