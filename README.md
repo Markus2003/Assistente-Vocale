@@ -55,7 +55,7 @@ Tra molto tempo:
 - Porting per la lingua Inglese
 
 Se ho tempo e se si può:
-- Versione per ```Linux ARM``` per ```Chromebook```
+- Versione per ```Linux ARM``` su ```Chromebook```
 
 # BUG
 - Su ```Linux``` il Sintetizzatore Vocale ```emacs``` e ```espeak``` non danno risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
