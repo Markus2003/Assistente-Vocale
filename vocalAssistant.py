@@ -8,6 +8,12 @@ import pyttsx3
 import speech_recognition as sr
 import wikipedia
 
+#Da aggiungere
+#import datetime
+#import playsound
+#import wolframalpha
+#from selenium import webdriver                                                                                     #Controllo Operazioni Browser
+
 prefix = " "
 assistantName = " "
 assistantPrefix = " "
@@ -20,7 +26,7 @@ def checkAndReadData():
     global userName
     global assistantPrefix
 
-    if os.path.isfile("data.txt"):
+    if os.path.isfile("data/userSettings.txt"):
         textAndSpeech("A quanto pare esiste già un file con dei miei vecchi dati, vuoi utilizzarli?")
         query = takeCommand().lower()
         if query == "sì":
@@ -30,35 +36,34 @@ def checkAndReadData():
                 userName = file.readline().strip().capitalize()
         else:
             textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
-            textAndSpeech("Che prefisso vuoi usare?\n- Ok\n- Ehi")
-            query = takeCommand().lower()
-            if query == "Ok" or query == "Ehi":
-                prefix = query
-            else:
-                prefix = "ehi"
-            textAndSpeech("Ok, come vuoi chiamarmi?")
-            assistantName = takeCommand().capitalize()
-            textAndSpeech("Perfetto, adesso come vuoi che ti chiami?")
-            userName = takeCommand().capitalize()
+            assistantSetup()
     else:
         textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
-        textAndSpeech("Che prefisso vuoi usare?\n- Ok\n- Ehi")
-        query = takeCommand().lower()
-        if query == "Ok" or query == "Ehi":
-            prefix = query
-        else:
-            prefix = "Ehi"
-        textAndSpeech("Ok, come vuoi chiamarmi?")
-        assistantName = takeCommand().capitalize()
-        textAndSpeech("Perfetto, adesso come vuoi che ti chiami?")
-        userName = takeCommand().capitalize()
-    assistantPrefix = prefix.lower() + " " + assistantName.lower() + " "
-    textAndSpeech("Fantastico, sei pronto ad utilizzarmi!")
+        assistantSetup()
 
 def saveData():
-    with open("data.txt", "w") as file:
+    with open("data/userSettings.txt", "w") as file:
         file.write(prefix + "\n" + assistantName + "\n" + userName)
         file.close()
+
+def assistantSetup():
+    global prefix
+    global assistantName
+    global userName
+    global assistantPrefix
+
+    textAndSpeech("Che prefisso vuoi usare?\n- Ok\n- Ehi")
+    query = takeCommand().lower()
+    if query == "Ok" or query == "Ehi":
+        prefix = query
+    else:
+        prefix = "ehi"
+    textAndSpeech("Ok, come vuoi chiamarmi?")
+    assistantName = takeCommand().capitalize()
+    textAndSpeech("Perfetto, adesso come vuoi che ti chiami?")
+    userName = takeCommand().capitalize()
+    assistantPrefix = prefix.lower() + " " + assistantName.lower() + " "
+    textAndSpeech("Fantastico, sei pronto ad utilizzarmi!")
 
 def speak ( textToSpeech ):
     engine = pyttsx3.init()
@@ -116,11 +121,13 @@ def Take_query():
                 if platform.system() == "Windows":
                     webbrowser.open("explorer.exe")
                 elif platform.system() == "Linux":
-                    try:
-                        os.system("nautilus &")
+                    try:                                                                                            #TODO: Pseudo-Implementazione di xdg-open
+                        #os.system("nautilus &")
+                        os.system("xdg-open nautilus")
                     except:
                         try:
-                            os.system("nemo &")
+                            #os.system("nemo &")
+                            os.system("xdg-open nemo")
                         except:
                             textAndSpeech("Non riesco a trovare un programma per aprire una finestra di Esplora File")
             except:
@@ -128,32 +135,9 @@ def Take_query():
 
         elif assistantPrefix + 'apri una connessione samba' == query:
             textAndSpeech("Non ho ancora implementato questa funzione")
-            # textAndSpeech("A quale Server SAMBA ti vuoi connettere? Ubuntu, Crostini o OnlyOffice?")
-            # query = takeCommand().lower()
-            # if "ubuntu" == query:
-            #     smbAddress = "192.168.0.55"
-            # elif "crostini" == query:
-            #     smbAddress = "penguin.linux.test"
-            # elif "onlyoffice" == query or "only office" == query:
-            #     smbAddress = "192.168.0.50"
-            
-            # try:
-            #     if platform.system() == "Windows":
-            #         webbrowser.open("\\" + smbAddress + "/")
-            #     else:
-            #         webbrowser.open("smb://" + smbAddress + "/")
-            # except:
-            #     textAndSpeech("Qualcosa non va, non sono riuscita a connettermi al Server SAMBA")
 
         elif assistantPrefix + 'connettimi al server' == query:
-            textAndSpeech("A quale Server ti vuoi connettere? Ubuntu, Crostini o OnlyOffice?")
-            query = takeCommand().lower()
-            if "ubuntu" == query:
-                webbrowser.open("https://192.168.0.55")
-            elif "crostini" == query:
-                webbrowser.open("https://penguin.linux.test")
-            elif "onlyoffice" == query or "only office" == query:
-                webbrowser.open("https://192.168.0.50")
+            textAndSpeech("Non ho ancora implementato questa funzione")
 
         elif assistantPrefix + 'mandami su internet' == query:                                                      #TODO: Valutare l'implementazione di Google
             textAndSpeech("Ok, buona navigazione")
@@ -180,8 +164,12 @@ def Take_query():
             query = takeCommand().lower()
             webbrowser.open("https://music.youtube.com/search?q=" + query)
 
-        elif assistantPrefix + 'grazie' == query:
+        elif assistantPrefix + 'grazie' == query:                                                                   #TODO: Randomizzare il "Non c'è di che" con altro
             textAndSpeech("Non c'è di che " + userName)
+
+        #TODO: Aggiungere richiesta Ora
+
+        #TODO: Aggiungere richiesta Data
 
         elif assistantPrefix + 'presentati' == query:
             textAndSpeech("Ma ciao, io sono " + assistantName + ", la tua assistente vocale. Al momento so fare poche cose, ma le so fare molto bene. Sono ancora in fase di sviluppo, se hai quindi dei problemi puoi rivolgerti a mio padre: Marco!")
@@ -189,7 +177,7 @@ def Take_query():
         elif assistantPrefix + 'presentati in maniera accurata' == query:
             textAndSpeech("Nome: " + assistantName + ". Prefisso parziale: " + prefix + ". Prefisso Totale: " + assistantPrefix + ". Versione: " + currentVersion + ". Creato da: Marco")
 
-        elif assistantPrefix + 'addio' == query:
+        elif assistantPrefix + 'addio' == query:                                                                    #TODO: Cambiare la Keyword con qualcosa di inequivocabile
             textAndSpeech("Prima che tu te ne vada, vuoi salvare i miei dati? Per salvare dì \"Salva\"")
             query = takeCommand().lower()
             if "salva" in query:
