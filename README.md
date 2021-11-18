@@ -5,6 +5,7 @@ E non è neanche così terribile...
 ```Assistente Vocale``` è appunto un Assistente Vocale scritto in Python altamente personalizzabile, anche se per il momento la personalizzazione si limita all'impostazione del Prefisso e del Nome Utente... 
 
 Comunque conto di portare la personalizzazione a livelli più alti!
+<br><br>
 
 # Sviluppo Attivo
 
@@ -60,6 +61,20 @@ dopodichè potrai eseguire dalla cartella dello script:
 - Sa rispondere ad un ```Grazie!```
 - Sa dire ```che ore sono``` e ```che giorno è```
 - Con un ```addio``` si chiude il programma
+<br><br>
+
+# Changelog
+## Versione Release
+Versione Release attuale: ```V. 0.0.5-ALPHA.2021.11.17```<br>
+Versione Base di ```Assistente Vocale```
+
+<br>
+
+## Versione Codice Sorgente
+Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.18```<br>
+- ```a9de878``` -> Nuove Funzione aggiunte (Richiesta ```data``` e ora ```ora``` )
+- ```cd59da9``` -> Maggiore compatibilità con il TextToSpeech
+- ```0e681f1``` -> Nuvo struttura per i dati, nuovo sistema di salvataggio e ripristino dati
 
 # Feature in arrivo
 A breve:
@@ -76,11 +91,13 @@ Tra molto tempo:
 
 Se ho tempo e se si può:
 - Versione per ```Linux ARM``` su ```Chromebook```
+<br><br>
 
 # BUG
 - Se su ```Linux``` viene dato un ```OSError``` eseguire il comando ```sudo apt-get install espeak```
 - Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
+<br><br>
 
 # Roadmap
 - Dicembre: Migliorare Esperienza CLI
