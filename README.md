@@ -50,6 +50,17 @@ dopodichè potrai eseguire dalla cartella dello script:
     pyinstaller -n "vocalAssistant" -i src/logo.ico vocalAssistant.py
 ```
 
+# Cosa sa fare
+```Assistente Vocale``` sa fare già alcune cose:
+- Sa salutare ad un ```Ciao!``` e a un ```Hello There!```
+- Sa aprire una finestra di ```Esplorare File``` sia su ```Windows``` che su ```Linux```, o almeno ci prova...
+- Sa aprire una finestra di ```Internet``` ed eventalmente fare una ricerca con ```you.com```
+- Sa fare una ricerca su ```Wikipedia``` Inglese
+- Sa aprire una finestra di ```YouTube Music``` ed eventualmente cercare un brano
+- Sa rispondere ad un ```Grazie!```
+- Sa dire ```che ore sono``` e ```che giorno è```
+- Con un ```addio``` si chiude il programma
+
 # Feature in arrivo
 A breve:
 - Miglioramento Esperienza mediante CLI
