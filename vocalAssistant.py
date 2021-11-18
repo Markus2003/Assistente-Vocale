@@ -167,9 +167,11 @@ def Take_query():
         elif assistantPrefix + 'grazie' == query:                                                                   #TODO: Randomizzare il "Non c'è di che" con altro
             textAndSpeech("Non c'è di che " + userName)
 
-        #TODO: Aggiungere richiesta Ora
+        elif assistantPrefix + 'che ore sono' == query or assistantPrefix + 'che ore sono?' == query:
+            textAndSpeech("Sono le " + datetime.datetime.now().strftime( "%H e %M" ))
 
-        #TODO: Aggiungere richiesta Data
+        elif assistantPrefix + 'che giorno è' == query or assistantPrefix + 'che giorno è?' == query:
+            textAndSpeech("Oggi è il " + datetime.date.today().strftime("%d %B %Y"))
 
         elif assistantPrefix + 'presentati' == query:
             textAndSpeech("Ma ciao, io sono " + assistantName + ", la tua assistente vocale. Al momento so fare poche cose, ma le so fare molto bene. Sono ancora in fase di sviluppo, se hai quindi dei problemi puoi rivolgerti a mio padre: Marco!")
