@@ -30,6 +30,7 @@ Puoi scaricare direttamente una Release, altrimenti puoi scaricare il Codice Sor
     pip install pyttsx3
     pip install SpeechRecognition
     pip install wikipedia
+    pip install pyaudio
 ```
 - Una volta installate le librerie potrai eseguire ```pip vocalAssistant.py```
 - Fatto!
@@ -66,7 +67,8 @@ Se ho tempo e se si può:
 - Versione per ```Linux ARM``` su ```Chromebook```
 
 # BUG
-- Su ```Linux``` il Sintetizzatore Vocale ```emacs``` e ```espeak``` non danno risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
+- Se su ```Linux``` viene dato un ```OSError``` eseguire il comando ```sudo apt-get install espeak```
+- Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
 
 # Roadmap
