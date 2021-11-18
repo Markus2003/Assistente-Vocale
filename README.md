@@ -29,9 +29,7 @@ Durante la fase ```ALPHA``` potrai scaricare solo il Codice Sorgente
 - Prima abbiamo detto che ```Assistente Vocale``` è scritto in Python, quindi dovrai scaricare [pip](https://www.python.org/)
 - Questa app contiene librerie esterne che non sono incluse nell'installazione di ```pip```, dovrai quindi scaricarle, per farlo ti basterà aprire una finestra del ```CMD``` per Windows o del ```Terminale``` per Linux e scrivere:
 ```python
-    pip install pyttsx3
-    pip install SpeechRecognition
-    pip install wikipedia
+    pip install pyttsx3 SpeechRecognition wikipedia
 
     #Installazione PyAudio su Windows
     pip install pipwin
