@@ -32,6 +32,12 @@ Durante la fase ```ALPHA``` potrai scaricare solo il Codice Sorgente
     pip install pyttsx3
     pip install SpeechRecognition
     pip install wikipedia
+
+    #Installazione PyAudio su Windows
+    pip install pipwin
+    pipwin install pyaudio
+
+    #Installazione PyAudio su Linux
     pip install pyaudio
 ```
 - Una volta installate le librerie potrai eseguire ```python vocalAssistant.py``` o ```python3 vocalAssistant.py```
@@ -96,8 +102,8 @@ Se ho tempo e se si può:
 <br><br>
 
 # BUG
-- Se su ```Linux``` viene dato un ```OSError``` eseguire il comando ```sudo apt-get install espeak```
-- Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante Wine
+- Se su ```Linux``` viene dato un ```OSError``` quando l'Assistente dovrebbe parlare eseguire il comando ```sudo apt-get install espeak```
+- Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante ```Wine```
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
 <br><br>
 
