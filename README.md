@@ -16,13 +16,14 @@ Comunque conto di portare la personalizzazione a livelli più alti!
 | macOS   |  ✗     |  ✗     |  ✗     |
 
 # Installazione
-Puoi scaricare direttamente una Release, altrimenti puoi scaricare il Codice Sorgente e compilarlo da te! (W l'Open Source)
+Durante la fase ```ALPHA``` potrai scaricare solo il Codice Sorgente
+<!--Puoi scaricare direttamente una Release, altrimenti puoi scaricare il Codice Sorgente e compilarlo da te! (W l'Open Source)
 
 ## Installazione di una Release
 - Scarica l'archivio da Release (Esempio: ```vocalAssistant - <version> - <platform>.rar```)
 - Estrai l'archivio in una cartella a tua scelta
 - Esegui ```vocalAssistant.exe``` per Windows, ```vocalAssistant``` per Linux
-- Fatto!
+- Fatto!-->
 
 ##  Download Codice Sorgente
 - Prima abbiamo detto che ```Assistente Vocale``` è scritto in Python, quindi dovrai scaricare [pip](https://www.python.org/)
@@ -33,7 +34,7 @@ Puoi scaricare direttamente una Release, altrimenti puoi scaricare il Codice Sor
     pip install wikipedia
     pip install pyaudio
 ```
-- Una volta installate le librerie potrai eseguire ```pip vocalAssistant.py```
+- Una volta installate le librerie potrai eseguire ```python vocalAssistant.py``` o ```python3 vocalAssistant.py```
 - Fatto!
 
 Python offre inoltre una libreria per la compilazione dei propri script: ```PyInstaller```. Per usarla ti basterà aprire una finestra del ```CMD``` per Windows o del ```Terminale``` per Linux e scrivere:
@@ -64,17 +65,18 @@ dopodichè potrai eseguire dalla cartella dello script:
 <br><br>
 
 # Changelog
-## Versione Release
+<!--## Versione Release
 Versione Release attuale: ```V. 0.0.5-ALPHA.2021.11.17```<br>
 Versione Base di ```Assistente Vocale```
 
 <br>
-
+-->
 ## Versione Codice Sorgente
 Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.18```<br>
 - ```a9de878``` -> Nuove Funzione aggiunte (Richiesta ```data``` e ora ```ora``` )
 - ```cd59da9``` -> Maggiore compatibilità con il TextToSpeech
 - ```0e681f1``` -> Nuvo struttura per i dati, nuovo sistema di salvataggio e ripristino dati
+<br><br>
 
 # Feature in arrivo
 A breve:
