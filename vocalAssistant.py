@@ -14,6 +14,8 @@ import wikipedia
 #import wolframalpha
 #from selenium import webdriver                                                                                     #Controllo Operazioni Browser
 
+#Aggiungere un classe per generare altre classi così da essere compilate ed eseguite in Run-Time (possibilmente come sotto-processo)
+
 prefix = " "
 assistantName = " "
 assistantPrefix = " "
@@ -110,10 +112,10 @@ def Take_query():
         query = takeCommand().lower()
         query.lower()
 
-        if assistantPrefix + 'ciao' == query:
+        if assistantPrefix + 'ciao' == query or assistantPrefix + 'ciao!' == query:
             greetMe()
         
-        elif assistantPrefix + 'hello there' == query:
+        elif assistantPrefix + 'hello there' == query or assistantPrefix + 'hello there!' == query:
             textAndSpeech("General " + userName + "!")
 
         elif assistantPrefix + 'apri una finestra di esplora file' == query or assistantPrefix + 'apri esplora file' == query:
@@ -164,7 +166,7 @@ def Take_query():
             query = takeCommand().lower()
             webbrowser.open("https://music.youtube.com/search?q=" + query)
 
-        elif assistantPrefix + 'grazie' == query:                                                                   #TODO: Randomizzare il "Non c'è di che" con altro
+        elif assistantPrefix + 'grazie' == query or assistantPrefix + 'grazie!' == query:                           #TODO: Randomizzare il "Non c'è di che" con altro
             textAndSpeech("Non c'è di che " + userName)
 
         elif assistantPrefix + 'che ore sono' == query or assistantPrefix + 'che ore sono?' == query:
