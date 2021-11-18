@@ -29,31 +29,31 @@ Durante la fase ```ALPHA``` potrai scaricare solo il Codice Sorgente
 - Prima abbiamo detto che ```Assistente Vocale``` è scritto in Python, quindi dovrai scaricare [pip](https://www.python.org/)
 - Questa app contiene librerie esterne che non sono incluse nell'installazione di ```pip```, dovrai quindi scaricarle, per farlo ti basterà aprire una finestra del ```CMD``` per Windows o del ```Terminale``` per Linux e scrivere:
 ```python
-    pip install pyttsx3 SpeechRecognition wikipedia
+pip install pyttsx3 SpeechRecognition wikipedia
 
-    #Installazione PyAudio su Windows
-    pip install pipwin
-    pipwin install pyaudio
+#Installazione PyAudio su Windows
+pip install pipwin
+pipwin install pyaudio
 
-    #Installazione PyAudio su Linux
-    pip install pyaudio
+#Installazione PyAudio su Linux
+pip install pyaudio
 ```
 - Una volta installate le librerie potrai eseguire ```python vocalAssistant.py``` o ```python3 vocalAssistant.py```
 - Fatto!
 
 Python offre inoltre una libreria per la compilazione dei propri script: ```PyInstaller```. Per usarla ti basterà aprire una finestra del ```CMD``` per Windows o del ```Terminale``` per Linux e scrivere:
 ```python
-    pip install pyinstaller
+pip install pyinstaller
 ```
 dopodichè potrai eseguire dalla cartella dello script:
 ```python
-    pyinstaller -F -n "vocalAssistant" -i logo.ico vocalAssistant.py
-    #"-F" chiede a PyInstaller di creare un singolo file eseguibile, questo comando è opzionale
-    #"-n" imposta il nome del file eseguibile, questo comando è opzionale
-    #"-i" imposta l'icona dell'applicazione, questo comando è opzionale
+pyinstaller -F -n "vocalAssistant" -i logo.ico vocalAssistant.py
+#"-F" chiede a PyInstaller di creare un singolo file eseguibile, questo comando è opzionale
+#"-n" imposta il nome del file eseguibile, questo comando è opzionale
+#"-i" imposta l'icona dell'applicazione, questo comando è opzionale
 
-    #Le mie Release sono fatte con questo comando:
-    pyinstaller -n "vocalAssistant" -i src/logo.ico vocalAssistant.py
+#Le mie Release sono fatte con questo comando:
+pyinstaller -n "vocalAssistant" -i src/logo.ico vocalAssistant.py
 ```
 
 # Cosa sa fare
