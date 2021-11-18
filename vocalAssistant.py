@@ -1,6 +1,7 @@
 import datetime
 import os
 import platform
+import random
 import sys
 import webbrowser
 
@@ -20,39 +21,94 @@ prefix = " "
 assistantName = " "
 assistantPrefix = " "
 userName = "Utente"
-currentVersion = "0.0.5-ALPHA.2021.11.17"
+currentVersion = "0.0.5-ALPHA.2021.11.18"
 
 def checkAndReadData():
-    global prefix
-    global assistantName
-    global userName
     global assistantPrefix
+    verifiedUsers = []
 
-    if os.path.isfile("data/userSettings.txt"):
-        textAndSpeech("A quanto pare esiste già un file con dei miei vecchi dati, vuoi utilizzarli?")
+    for dir in os.listdir("appStorage/users/"):
+        if os.path.isdir("appStorage/users/" + dir) and os.path.isfile("appStorage/users/" + dir + "/userSettings.txt"):
+            verifiedUsers.append(dir)
+        #elif os.path.isdir("appStorage/users/" + dir):                                                             #TODO: Provare ad aggiungere la posssibilità di eliminare gli utenti vuoti
+        #    os.rmdir("appStorage/users/" + dir)
+
+    if len(verifiedUsers) == 0:
+        textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
+        assistantSetup()
+    
+    elif len(verifiedUsers) == 1:
+        textAndSpeech("Ho trovato l'utente " + verifiedUsers[0] + ", vuoi caricare i dati associati?")
         query = takeCommand().lower()
-        if query == "sì":
-            with open("data.txt", "r") as file:
-                prefix = file.readline().strip().lower()
-                assistantName = file.readline().strip().capitalize()
-                userName = file.readline().strip().capitalize()
+        if query == "si" or query == "Si" or query == "sì" or query == "Sì":
+            importUserSettings( verifiedUsers[0] )
         else:
             textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
             assistantSetup()
-    else:
-        textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
-        assistantSetup()
+
+    elif len(verifiedUsers) > 1:
+        sampleString = ""
+        for user in verifiedUsers:
+            sampleString += "- " + user.capitalize() + "\n"
+        sampleString += "- Nessuno"
+        textAndSpeech("Ho trovato vari Utenti, eccoli:\n" + sampleString + "\nQuale vuoi caricare?")
+        query = takeCommand().lower()
+        if query in verifiedUsers:
+            index = verifiedUsers.index( query )
+            importUserSettings( verifiedUsers[index] )
+        else:
+            textAndSpeech("Ciao, sono il tuo nuovo e personale Assistente Vocale. Sembra che questa sia la prima volta che mi avvii, ciò significa che è necessaria una configurazione preliminare. Cominciamo!")
+            assistantSetup()
+
+    assistantPrefix = prefix.lower() + " " + assistantName.lower() + " "
+    textAndSpeech("Fantastico, ora sei pronto ad utilizzarmi!")
+
+def importUserSettings(dirName):
+    global prefix
+    global assistantName
+    global userName
+
+    with open("appStorage/users/" + dirName + "/userSettings.txt", "r") as file:
+        prefix = file.readline().strip().lower()
+        assistantName = file.readline().strip().capitalize()
+        userName = dirName.capitalize()
+        file.close()
+
+def exportUserSettings():
+    textAndSpeech("Inizio Salvataggio...")
+    with open("appStorage/users/" + userName.lower() + "/userSettings.txt", "w") as file:
+        file.write(prefix + "\n")
+        file.write(assistantName + "\n")
+        file.close()
+    textAndSpeech("Salvataggio completato!")
 
 def saveData():
-    with open("data/userSettings.txt", "w") as file:
-        file.write(prefix + "\n" + assistantName + "\n" + userName)
-        file.close()
+    try:
+        if os.path.isdir("appStorage/users/" + userName.lower()):
+            if os.path.isfile("appStorage/users/" + userName.lower() + "/userSettings.txt"):
+                textAndSpeech("Sei sicuro di voler sovvrascrivere i dati?")
+                query = takeCommand().lower()
+                if query == "si" or query == "Si" or query == "sì" or query == "Sì":
+                    textAndSpeech("Modalità di Sovrascrittura Dati")
+                    exportUserSettings()
+                else:
+                    return False
+            else:
+                textAndSpeech("Genero nuovi dati di salvataggio...")
+                exportUserSettings()
+        else:
+            os.makedirs("appStorage/users/" + userName.lower() + "/")
+            textAndSpeech("Genero nuovi dati di salvataggio...")
+            exportUserSettings()
+        return True
+    except:
+        textAndSpeech("Errore fatale durante il Salvataggio dei dati. Operazione annullata, riprovare più tardi.")
+        return False
 
 def assistantSetup():
     global prefix
     global assistantName
     global userName
-    global assistantPrefix
 
     textAndSpeech("Che prefisso vuoi usare?\n- Ok\n- Ehi")
     query = takeCommand().lower()
@@ -64,7 +120,6 @@ def assistantSetup():
     assistantName = takeCommand().capitalize()
     textAndSpeech("Perfetto, adesso come vuoi che ti chiami?")
     userName = takeCommand().capitalize()
-    assistantPrefix = prefix.lower() + " " + assistantName.lower() + " "
     textAndSpeech("Fantastico, sei pronto ad utilizzarmi!")
 
 def speak ( textToSpeech ):
@@ -112,10 +167,10 @@ def Take_query():
         query = takeCommand().lower()
         query.lower()
 
-        if assistantPrefix + 'ciao' == query or assistantPrefix + 'ciao!' == query:
+        if assistantPrefix + 'ciao' == query or assistantPrefix + 'Ciao' == query:
             greetMe()
         
-        elif assistantPrefix + 'hello there' == query or assistantPrefix + 'hello there!' == query:
+        elif assistantPrefix + 'hello there' == query or assistantPrefix + 'Hello there' == query or assistantPrefix + 'hello There' == query or assistantPrefix + 'Hello There' == query:
             textAndSpeech("General " + userName + "!")
 
         elif assistantPrefix + 'apri una finestra di esplora file' == query or assistantPrefix + 'apri esplora file' == query:
@@ -166,8 +221,9 @@ def Take_query():
             query = takeCommand().lower()
             webbrowser.open("https://music.youtube.com/search?q=" + query)
 
-        elif assistantPrefix + 'grazie' == query or assistantPrefix + 'grazie!' == query:                           #TODO: Randomizzare il "Non c'è di che" con altro
-            textAndSpeech("Non c'è di che " + userName)
+        elif assistantPrefix + 'grazie' == query or assistantPrefix + 'Grazie' == query:                           #TODO: Randomizzare il "Non c'è di che" con altro
+            thanksDictionary = ["Prego!", "Di nulla!", "Non c'è di che!", "Al tuo sevizio!"]
+            textAndSpeech( random.choice(thanksDictionary) )
 
         elif assistantPrefix + 'che ore sono' == query or assistantPrefix + 'che ore sono?' == query:
             textAndSpeech("Sono le " + datetime.datetime.now().strftime( "%H e %M" ))
@@ -181,15 +237,13 @@ def Take_query():
         elif assistantPrefix + 'presentati in maniera accurata' == query:
             textAndSpeech("Nome: " + assistantName + ". Prefisso parziale: " + prefix + ". Prefisso Totale: " + assistantPrefix + ". Versione: " + currentVersion + ". Creato da: Marco")
 
-        elif assistantPrefix + 'addio' == query:                                                                    #TODO: Cambiare la Keyword con qualcosa di inequivocabile
+        elif assistantPrefix + 'addio' == query or assistantPrefix + "Addio" == query:                              #TODO: Cambiare la Keyword con qualcosa di inequivocabile
             textAndSpeech("Prima che tu te ne vada, vuoi salvare i miei dati? Per salvare dì \"Salva\"")
             query = takeCommand().lower()
             if "salva" in query:
-                textAndSpeech("Inizio il salvataggio...")
-                saveData()
-                textAndSpeech("Salvataggio terminato")
-            textAndSpeech("Ciao Ciao " + userName + "!")
-            sys.exit()
+                if saveData():
+                    textAndSpeech("Ciao ciao " + userName + "!")
+                    sys.exit()
 
 if __name__ == '__main__':
     checkAndReadData()
