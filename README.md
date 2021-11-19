@@ -1,3 +1,6 @@
+# ATTENZIONE
+Attualmente sei nella versione ```test``` di ```Assistente Vocale```. Per avere un'applicazione più stabile, usa la versione ```master```.
+
 # Assistente Vocale
 E non è neanche così terribile...
 
