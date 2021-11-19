@@ -85,12 +85,12 @@ Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.18```<br>
 # Feature in arrivo
 A breve:
 - Miglioramento Esperienza mediante CLI
-- Creazione di Comandi Personalizzati
+- Calendario con Gestione degli Eveenti interno
 
 Tra un po':
 - Una incredibile GUI così da evitare la fastidiosa finestra del Terminale...
 - Voice Trigger come per "```Hey Google```"
-- Calendario con Gestione degli Eventi interno
+- Creazione di Comandi Personalizzati
 
 Tra molto tempo:
 - Porting per la lingua Inglese
