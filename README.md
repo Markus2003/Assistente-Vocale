@@ -77,7 +77,7 @@ Versione Base di ```Assistente Vocale```
 -->
 ## Versione Codice Sorgente
 Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.18```<br>
-- ```a9de878``` -> Nuove Funzione aggiunte (Richiesta ```data``` e ```ora``` )
+- ```a9de878``` -> Nuove Funzioni aggiunte (Richiesta ```data``` e ```ora``` )
 - ```cd59da9``` -> Maggiore compatibilità con il TextToSpeech
 - ```0e681f1``` -> Nuvo struttura per i dati, nuovo sistema di salvataggio e ripristino dati
 <br><br>
