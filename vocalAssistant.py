@@ -9,6 +9,8 @@ import pyttsx3
 import speech_recognition as sr
 import wikipedia
 
+from src.classes import calendarActivity, customAction
+
 #Da aggiungere
 #import datetime
 #import playsound
@@ -21,7 +23,10 @@ prefix = " "
 assistantName = " "
 assistantPrefix = " "
 userName = "Utente"
-currentVersion = "0.0.5-ALPHA.2021.11.18"
+currentVersion = "0.0.5-ALPHA.2021.11.20"                                                                           #TODO: Aggiornare Versione
+
+internalCalendar = []
+customActions = []
 
 def checkAndReadData():
     global assistantPrefix
@@ -237,13 +242,26 @@ def Take_query():
         elif assistantPrefix + 'presentati in maniera accurata' == query:
             textAndSpeech("Nome: " + assistantName + ". Prefisso parziale: " + prefix + ". Prefisso Totale: " + assistantPrefix + ". Versione: " + currentVersion + ". Creato da: Marco")
 
+        elif assistantPrefix + 'crea un nuovo evento' == query:
+            textAndSpeech("Non ho ancora implementato questa funzione")
+            #try:
+            #    internalCalendar.append(calendarActivity.calendarActivity.__init__())
+            #    if internalCalendar[ len( internalCalendar ) - 1 ].getValidClass() == False:                        #TODO: Trovare come entrare nella classe per accedere agli attributi
+            #        internalCalendar.pop()
+            #except Exception as e:
+            #    print(e)
+            #    textAndSpeech("Qualcosa non va, non sono riuscita a creare un nuovo evento")
+
         elif assistantPrefix + 'addio' == query or assistantPrefix + "Addio" == query:                              #TODO: Cambiare la Keyword con qualcosa di inequivocabile
             textAndSpeech("Prima che tu te ne vada, vuoi salvare i miei dati? Per salvare dì \"Salva\"")
             query = takeCommand().lower()
-            if "salva" in query:
+            if "salva" in query or "Salva" in query:
                 if saveData():
                     textAndSpeech("Ciao ciao " + userName + "!")
                     sys.exit()
+            else:
+                textAndSpeech("Ciao ciao " + userName + "!")
+                sys.exit()
 
 if __name__ == '__main__':
     checkAndReadData()
