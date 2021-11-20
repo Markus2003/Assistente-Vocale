@@ -79,10 +79,9 @@ Versione Base di ```Assistente Vocale```
 <br>
 -->
 ## Versione Codice Sorgente
-Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.18```<br>
-- ```a9de878``` -> Nuove Funzioni aggiunte (Richiesta ```data``` e ```ora``` )
-- ```cd59da9``` -> Maggiore compatibilità con il TextToSpeech
-- ```0e681f1``` -> Nuvo struttura per i dati, nuovo sistema di salvataggio e ripristino dati
+Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.20```<br>
+- ```43aadf6``` -> Completata la scrittura del Calendario Interno, inzio implementazione della funzione
+- ```43aadf6``` -> Bozza per la creazione di Azioni Personalizzabili
 <br><br>
 
 # Feature in arrivo
