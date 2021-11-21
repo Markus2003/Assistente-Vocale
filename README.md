@@ -87,7 +87,7 @@ Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.20```<br>
 # Feature in arrivo
 A breve:
 - Miglioramento Esperienza mediante CLI
-- Calendario con Gestione degli Eveenti interno
+- Calendario con Gestione degli Eventi interno
 
 Tra un po':
 - Una incredibile GUI così da evitare la fastidiosa finestra del Terminale...
@@ -104,11 +104,11 @@ Se ho tempo e se si può:
 # BUG
 - Se su ```Linux``` viene dato un ```OSError``` quando l'Assistente dovrebbe parlare eseguire il comando ```sudo apt-get install espeak```
 - Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante ```Wine```
-- L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fare quindi attenzione a non parlare a vuoto
+- L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fate quindi attenzione a non parlare a vuoto
 <br><br>
 
 # Roadmap
-- Dicembre: Migliorare Esperienza CLI
+- Dicembre: Migliorare Esperienza CLI e Calendario Interno
 - Entro fine 2021 uscire dalla fase ```ALPHA``` ed entrare in fase ```BETA```
 - Gennaio: Creazione dei Comandi Personalizzati
 - Poi si vedrà...
