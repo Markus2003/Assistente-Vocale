@@ -64,7 +64,7 @@ pyinstaller -n "vocalAssistant" -i src/logo.ico vocalAssistant.py
 - Sa salutare ad un ```Ciao!``` e a un ```Hello There!```
 - Sa aprire una finestra di ```Esplorare File``` sia su ```Windows``` che su ```Linux```, o almeno ci prova...
 - Sa aprire una finestra di ```Internet``` ed eventalmente fare una ricerca con ```you.com```
-- Sa fare una ricerca su ```Wikipedia``` Inglese
+- Sa fare una ricerca su ```Wikipedia``` Italiana
 - Sa aprire una finestra di ```YouTube Music``` ed eventualmente cercare un brano
 - Sa rispondere ad un ```Grazie!```
 - Sa dire ```che ore sono``` e ```che giorno è```
@@ -79,9 +79,8 @@ Versione Base di ```Assistente Vocale```
 <br>
 -->
 ## Versione Codice Sorgente
-Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.20```<br>
-- ```43aadf6``` -> Completata la scrittura del Calendario Interno, inzio implementazione della funzione
-- ```43aadf6``` -> Bozza per la creazione di Azioni Personalizzabili
+Versione Codice Sorgente attuale: ```V. 0.0.5-ALPHA.2021.11.21```<br>
+- ```ddb5bb5``` -> Migliorata esperienza lato Linux con TroubbleShooter migliorato, Wikipedia migliorato e convertito in Italiano, implementata la ricerca su Google
 <br><br>
 
 # Feature in arrivo
