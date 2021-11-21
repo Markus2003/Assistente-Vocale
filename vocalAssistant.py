@@ -8,6 +8,7 @@ import webbrowser
 import pyttsx3
 import speech_recognition as sr
 import wikipedia
+from playsound import playsound
 
 from src.classes import calendarActivity, customAction
 
@@ -23,7 +24,9 @@ prefix = " "
 assistantName = " "
 assistantPrefix = " "
 userName = "Utente"
-currentVersion = "0.0.5-ALPHA.2021.11.20"                                                                           #TODO: Aggiornare Versione
+currentVersion = "0.0.5-ALPHA.2021.11.21"                                                                           #TODO: Aggiornare Versione
+
+linuxTTS = 0
 
 internalCalendar = []
 customActions = []
@@ -66,7 +69,6 @@ def checkAndReadData():
             assistantSetup()
 
     assistantPrefix = prefix.lower() + " " + assistantName.lower() + " "
-    textAndSpeech("Fantastico, ora sei pronto ad utilizzarmi!")
 
 def importUserSettings(dirName):
     global prefix
@@ -78,6 +80,7 @@ def importUserSettings(dirName):
         assistantName = file.readline().strip().capitalize()
         userName = dirName.capitalize()
         file.close()
+    textAndSpeech("Fantastico, ora sei pronto ad utilizzarmi!")
 
 def exportUserSettings():
     textAndSpeech("Inizio Salvataggio...")
@@ -128,11 +131,42 @@ def assistantSetup():
     textAndSpeech("Fantastico, sei pronto ad utilizzarmi!")
 
 def speak ( textToSpeech ):
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)
-    engine.say( textToSpeech )
-    engine.runAndWait()
+    global linuxTTS
+
+    if platform.system() == "Windows":
+        engine = pyttsx3.init()
+        voices = engine.getProperty('voices')
+        engine.setProperty('voice', voices[0].id)
+        engine.say( textToSpeech )
+        engine.runAndWait()
+    elif platform.system() == "Linux":
+        if linuxTTS == 1:
+            try:
+                engine = pyttsx3.init()
+                voices = engine.getProperty('voices')
+                engine.setProperty('voice', voices[0].id)
+                engine.say( textToSpeech )
+                engine.runAndWait()
+            except OSError as e:
+                print("A quanto pare non risulta installato espeak, esegui il comando \"sudo apt-get install espeak -y\"")
+                sys.exit(1)
+        elif linuxTTS == 2:
+            try:
+                try:
+                    os.system("pico2wave -l it-IT -w appStorage/temp/audio.wav \"" + str( textToSpeech ) + "\"")
+                    playsound("appStorage/temp/audio.wav")
+                    os.remove("appStorage/temp/audio.wav")
+                except Exception as e:
+                    try:
+                        pass
+                        os.remove("appStorage/temp/audio.wav")
+                    except:
+                        pass
+                    print(e)
+                    sys.exit()
+            except OSError as e:
+                print("A quanto pare non risulta installato espeak, esegui il comando \"sudo apt-get install libttspico-utils -y\"")
+                sys.exit(1)
 
 def takeCommand():
     r = sr.Recognizer()
@@ -208,14 +242,23 @@ def Take_query():
         elif assistantPrefix + 'fai una ricerca su wikipedia' == query:                                             #TODO: Migliorare dump dei risultati
             textAndSpeech("Cosa vuoi cercare?")
             query = takeCommand().lower()
-            results = wikipedia.summary(query, sentences=2)
-            textAndSpeech("A proposito di " + query)
+            wikipedia.set_lang("it")
+            results = wikipedia.summary(query)
+            textAndSpeech("Ok, ho trovato questo:")
             textAndSpeech(results)
+            #results = wikipedia.summary(query, sentences=2)
+            #textAndSpeech("A proposito di " + query)
+            #textAndSpeech(results)
 
-        elif assistantPrefix + 'fai una ricerca su internet' == query:                                              #TODO: Valutare l'implementazione di Google
+        elif assistantPrefix + 'fai una ricerca su internet' == query:
             textAndSpeech("Cosa vuoi cercare?")
             query = takeCommand().lower()
             webbrowser.open("https://www.you.com/search?q=" + query)
+
+        elif assistantPrefix + 'fai una ricerca su google' == query:
+            textAndSpeech("Cosa vuoi cercare?")
+            query = takeCommand().lower()
+            webbrowser.open("https://www.google.com/search?q=" + query)
         
         elif assistantPrefix + 'apri youtube music' == query:
             textAndSpeech("Ok, apro YouTube Music")
@@ -264,5 +307,20 @@ def Take_query():
                 sys.exit()
 
 if __name__ == '__main__':
+    if platform.system() == "Linux":
+        if os.path.isfile("appStorage/linux"):
+            with open("appStorage/linux", "r") as f:
+                linuxTTS = int( f.read() )
+                f.close()
+        else:
+            print("Su Linux supporto più TTS:\n[1] Espeak\n[2] pico2wave\nQuale vuoi usare? (Predefinito [1]):")
+            linuxTTS = input()
+            if linuxTTS != "1" and linuxTTS != "2":
+                linuxTTS = "1"
+            linuxTTS = int(linuxTTS)
+            with open("appStorage/linux", "w") as f:
+                f.write(str(linuxTTS))
+                f.close()
+            print("Per modificare questa impostazione elimina il file \"linux\" nella cartella \"appStorage\"")
     checkAndReadData()
     Take_query()
