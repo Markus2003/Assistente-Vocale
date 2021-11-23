@@ -107,7 +107,7 @@ Se ho tempo e se si può:
 <br><br>
 
 # Roadmap
-- Dicembre: Migliorare Esperienza CLI e Calendario Interno
+- Dicembre: Migliorare Esperienza CLI, Calendario Interno ed integrzione con OpenWeatherMap per le Previsioni Meteo
 - Entro fine 2021 uscire dalla fase ```ALPHA``` ed entrare in fase ```BETA```
 - Gennaio: Creazione dei Comandi Personalizzati
 - Poi si vedrà...
