@@ -101,7 +101,6 @@ Se ho tempo e se si può:
 <br><br>
 
 # BUG
-- Se su ```Linux``` viene dato un ```OSError``` quando l'Assistente dovrebbe parlare eseguire il comando ```sudo apt-get install espeak```
 - Su ```Linux``` il Sintetizzatore Vocale ```espeak``` non da risultati soddisfacenti, sto cercando una soluzione a questo problema, intanto puoi provare ad utilizzare la versione ```Windows``` mediante ```Wine```
 - L'Assistente sente solo quando compare la scritta "```In Ascolto...```", fate quindi attenzione a non parlare a vuoto
 <br><br>
